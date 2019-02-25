@@ -132,21 +132,23 @@ namespace CalculatingAverage
         static void nonSpecific() 
         {
             //Average a non-specific number of scores
-            Console.WriteLine("Put in a score and Enter. To Stop, type -1 and enter. Integer Average shows how error propagates if int type is used in the recursive average method");
+            Console.WriteLine("Put in a score and Enter. To Stop, type -1 and enter."); //Integer Average shows how error propagates if int type is used in the recursive average method
             List<double> scoreList = new List<double>();
-            List<int> intscoreList = new List<int>();
+            //List<int> intscoreList = new List<int>();
             while (Double.TryParse(Console.ReadLine(),out double s) && s != -1)
             {
                 if (s >= 0 && s <= 100)
                 {
                     scoreList.Add(s);
-                    intscoreList.Add((int)s);
+                    //Console.WriteLine(String.Join("; ", scoreList));
+                    //intscoreList.Add((int)s);
+                    //Console.WriteLine(String.Join("; ", intscoreList));
                     //double avg = scoreList.Average();
                     //Console.WriteLine("Numeric Average: {0:F2}, Letter Grade {1}", avg, letterGrade(avg));
                     double reCursiveAvg = RecursiveAvg(scoreList);
                     Console.WriteLine("Numeric Average: {0:F2}, Letter Grade {1}", reCursiveAvg, letterGrade(reCursiveAvg));
-                    int recursiveIntAvg = TestIntRecursiveAvg(intscoreList);
-                    Console.WriteLine("Integer Average: {0}, Letter Grade {1}", recursiveIntAvg, letterGrade(recursiveIntAvg));
+                    //int recursiveIntAvg = TestIntRecursiveAvg(intscoreList);
+                    //Console.WriteLine("Integer Average: {0}, Letter Grade {1}", recursiveIntAvg, letterGrade(recursiveIntAvg));
 
                 }
                 else
@@ -206,6 +208,7 @@ namespace CalculatingAverage
             {
                 int result;
                 result = List[i] / List.Count; ;
+                //Console.Write(result.ToString()+' ');
                 if (i == 0) return result;
                 else return result + Helper(List, i - 1);
             }
@@ -220,6 +223,7 @@ namespace CalculatingAverage
             {
                 double result;
                 result = List[i] / List.Count;
+                //Console.Write(result.ToString() + ' ');
                 if (i == 0) return result;
                 else return result + Helper(List, i - 1);
             }
