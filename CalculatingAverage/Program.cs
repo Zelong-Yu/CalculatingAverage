@@ -132,19 +132,21 @@ namespace CalculatingAverage
         static void nonSpecific() 
         {
             //Average a non-specific number of scores
-            Console.WriteLine("Put in a score and Enter. To Stop, type -1 and enter");
+            Console.WriteLine("Put in a score and Enter. To Stop, type -1 and enter. Integer Average shows how error propagates if int type is used in the recursive average method");
             List<double> scoreList = new List<double>();
+            List<int> intscoreList = new List<int>();
             while (Double.TryParse(Console.ReadLine(),out double s) && s != -1)
             {
                 if (s >= 0 && s <= 100)
                 {
                     scoreList.Add(s);
+                    intscoreList.Add((int)s);
                     //double avg = scoreList.Average();
                     //Console.WriteLine("Numeric Average: {0:F2}, Letter Grade {1}", avg, letterGrade(avg));
                     double reCursiveAvg = RecursiveAvg(scoreList);
                     Console.WriteLine("Numeric Average: {0:F2}, Letter Grade {1}", reCursiveAvg, letterGrade(reCursiveAvg));
-                    int recursiveIntAvg = TestIntRecursiveAvg(scoreList);
-                    Console.WriteLine("Integer Average: {0:F2}, Letter Grade {1}", recursiveIntAvg, letterGrade(recursiveIntAvg));
+                    int recursiveIntAvg = TestIntRecursiveAvg(intscoreList);
+                    Console.WriteLine("Integer Average: {0}, Letter Grade {1}", recursiveIntAvg, letterGrade(recursiveIntAvg));
 
                 }
                 else
@@ -196,14 +198,14 @@ namespace CalculatingAverage
             return Helper(L, length - 1);  //index of list starts with 0 so use length-1
         }
 
-        static int TestIntRecursiveAvg(List<double> L)
+        static int TestIntRecursiveAvg(List<int> L)
         {
             //This is used to test aggrevating error when int type is used
             int length = L.Count;
-            int Helper(List<double> List, int i)
+            int Helper(List<int> List, int i)
             {
                 int result;
-                result = (int)List[i] / List.Count; ;
+                result = List[i] / List.Count; ;
                 if (i == 0) return result;
                 else return result + Helper(List, i - 1);
             }
