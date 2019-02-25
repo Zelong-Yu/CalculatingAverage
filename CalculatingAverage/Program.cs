@@ -143,6 +143,9 @@ namespace CalculatingAverage
                     //Console.WriteLine("Numeric Average: {0:F2}, Letter Grade {1}", avg, letterGrade(avg));
                     double reCursiveAvg = RecursiveAvg(scoreList);
                     Console.WriteLine("Numeric Average: {0:F2}, Letter Grade {1}", reCursiveAvg, letterGrade(reCursiveAvg));
+                    int recursiveIntAvg = TestIntRecursiveAvg(scoreList);
+                    Console.WriteLine("Integer Average: {0:F2}, Letter Grade {1}", recursiveIntAvg, letterGrade(recursiveIntAvg));
+
                 }
                 else
                 {
@@ -187,6 +190,20 @@ namespace CalculatingAverage
             {
                 double result;
                 result = List[i];
+                if (i == 0) return result;
+                else return result + Helper(List, i - 1);
+            }
+            return Helper(L, length - 1);  //index of list starts with 0 so use length-1
+        }
+
+        static int TestIntRecursiveAvg(List<double> L)
+        {
+            //This is used to test aggrevating error when int type is used
+            int length = L.Count;
+            int Helper(List<double> List, int i)
+            {
+                int result;
+                result = (int)List[i] / List.Count; ;
                 if (i == 0) return result;
                 else return result + Helper(List, i - 1);
             }
