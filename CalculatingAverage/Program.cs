@@ -33,6 +33,9 @@ namespace CalculatingAverage
                         case 5:
                             DisplayGradeScale();
                             break;
+                        case 6:
+                            fizzBuzz(100);
+                            break;
                         case 0:
                             loopContinue = false;
                             Console.WriteLine("Hit any key to exit.");
@@ -168,6 +171,7 @@ namespace CalculatingAverage
             Console.WriteLine("3. Average a specific number of scores");
             Console.WriteLine("4. Average a non-specific number of scores");
             Console.WriteLine("5. Display Letter Grade Scale");
+            Console.WriteLine("6. fizzBuzz");
             Console.WriteLine("0. Quit");
         }
         static void DisplayGradeScale()
@@ -228,6 +232,20 @@ namespace CalculatingAverage
                 else return result + Helper(List, i - 1);
             }
             return Helper(L, length-1);  //index of list starts with 0 so use length-1
+        }
+
+        static void fizzBuzz(int n)
+        {
+            for (int i = 1; i <= n; i++)
+            {
+                string test = "";
+                test += (i % 3 == 0 ? "fizz" : "");
+                //i % 5 == 0 ? test += "buzz" : test += ""; 
+                test += i % 5 == 0 ? "buzz" : "";
+                //string output = "";
+                //output += test == "" ? i.ToString() : test;
+                Console.Write((test == "") ? i.ToString()+", " : test+", ");
+            }
         }
 
         static string letterGrade(double score)
