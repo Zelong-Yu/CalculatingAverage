@@ -34,7 +34,11 @@ namespace CalculatingAverage
                             DisplayGradeScale();
                             break;
                         case 6:
-                            fizzBuzz(100);
+                            fizzBuzz();
+                            Console.WriteLine();
+                            fizzBuzz(100,7,11);
+                            Console.WriteLine();
+                            fizzBuzz(100, buzzn:13, fizzn:11);
                             break;
                         case 0:
                             loopContinue = false;
@@ -159,13 +163,16 @@ namespace CalculatingAverage
                     Console.WriteLine("Please put in valid score between 0 and 100.");
                 }
             }
+            //use Aggregate to calculate average
+            double aggAvg = scoreList.Aggregate(seed: 0.0, func:(average, next) => average + next, resultSelector:average => average / scoreList.Count);
+            Console.WriteLine("Aggregate Average: {0:F2}, Letter Grade {1}", aggAvg, letterGrade(aggAvg));
         }
 
         static void DisplayMenu()
         {
             Console.Clear();
             Console.WriteLine("Exercise 2A Calculating Averages");
-            Console.WriteLine("Make a selection 0-5 and hit enter. Invalid input will bring you back to main menu.");
+            Console.WriteLine("Make a selection 0-6 and hit enter. Invalid input will bring you back to main menu.");
             Console.WriteLine("1. Sum of 10 numbers");
             Console.WriteLine("2. Average ten scores");
             Console.WriteLine("3. Average a specific number of scores");
@@ -234,14 +241,14 @@ namespace CalculatingAverage
             return Helper(L, length-1);  //index of list starts with 0 so use length-1
         }
 
-        static void fizzBuzz(int n)
+        static void fizzBuzz(int n=100, int fizzn = 3, int buzzn =5 )
         {
             for (int i = 1; i <= n; i++)
             {
                 string test = "";
-                test += (i % 3 == 0 ? "fizz" : "");
-                //i % 5 == 0 ? test += "buzz" : test += ""; 
-                test += i % 5 == 0 ? "buzz" : "";
+                test += (i % fizzn == 0 ? "fizz" : "");
+               // i % buzzn == 0 ? test += "buzz" : test += ""; will not work since ternary operator wont take action
+                test += i % buzzn == 0 ? "buzz" : "";
                 //string output = "";
                 //output += test == "" ? i.ToString() : test;
                 Console.Write((test == "") ? i.ToString()+", " : test+", ");
