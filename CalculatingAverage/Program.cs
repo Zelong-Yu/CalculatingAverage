@@ -35,10 +35,10 @@ namespace CalculatingAverage
                             break;
                         case 6:
                             fizzBuzz();
-                            Console.WriteLine();
-                            fizzBuzz(100,7,11);
-                            Console.WriteLine();
-                            fizzBuzz(100, buzzn:13, fizzn:11);
+                            //Console.WriteLine();
+                            //fizzBuzz(100,7,11);
+                            //Console.WriteLine();
+                            //fizzBuzz(100, buzzn:13, fizzn:11);
                             break;
                         case 0:
                             loopContinue = false;
